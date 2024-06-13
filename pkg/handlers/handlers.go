@@ -1,7 +1,9 @@
 package handlers
 
 import (
+	"log"
 	"net/http"
+	"time"
 
 	"github.com/anucha-tk/go_basic_webapp/pkg/config"
 	"github.com/anucha-tk/go_basic_webapp/pkg/models"
@@ -36,4 +38,12 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "about.page.html", &models.TemplateData{
 		StringMap: stringMap,
 	})
+}
+
+func (m *Repository) Time(w http.ResponseWriter, r *http.Request) {
+	currentTime := time.Now().Format("15:04:05")
+	_, err := w.Write([]byte(currentTime))
+	if err != nil {
+		log.Fatal(err)
+	}
 }

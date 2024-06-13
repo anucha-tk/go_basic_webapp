@@ -29,6 +29,7 @@ func main() {
 
 	http.HandleFunc("/", handlers.Repo.Home)
 	http.HandleFunc("/about", handlers.Repo.About)
+	http.HandleFunc("/time", handlers.Repo.Time)
 	log.Println("run on port", port)
 	srv := http.Server{
 		Addr:              "localhost" + port,
