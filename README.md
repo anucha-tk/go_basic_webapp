@@ -6,6 +6,8 @@ http server-side render page
 
 - [GO BASIC WEBAPP](#go-basic-webapp)
   - [Techs and Tools](#techs-and-tools)
+  - [How to run](#how-to-run)
+  - [Tips](#tips) - [port error](#port-error)
   <!--toc:end-->
 
 ## Techs and Tools
@@ -16,6 +18,14 @@ http server-side render page
   - cache the templates
 - css
   - tailwindcss
+- infrastructure
+  - commitlint and linter
+
+## How to run
+
+```bash
+make dev
+```
 
 ## Tips
 

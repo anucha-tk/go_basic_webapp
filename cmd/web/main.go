@@ -14,7 +14,7 @@ func main() {
 	http.HandleFunc("/about", handlers.About)
 	log.Println("run on port", port)
 	srv := http.Server{
-		Addr:              "localhost:" + port,
+		Addr:              "localhost" + port,
 		ReadHeaderTimeout: time.Second * 5,
 	}
 	_ = srv.ListenAndServe()
