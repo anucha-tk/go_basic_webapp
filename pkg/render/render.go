@@ -2,13 +2,13 @@ package render
 
 import (
 	"bytes"
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"path/filepath"
 
 	"github.com/anucha-tk/go_basic_webapp/pkg/config"
+	"github.com/anucha-tk/go_basic_webapp/pkg/models"
 )
 
 var app *config.AppConfig
@@ -18,9 +18,8 @@ func NewTemplates(a *config.AppConfig) {
 }
 
 // RenderTemplate renders a template
-func RenderTemplate(w http.ResponseWriter, html string) {
+func RenderTemplate(w http.ResponseWriter, html string, td *models.TemplateData) {
 	var tc map[string]*template.Template
-	fmt.Println(app.UseCache)
 	if app.UseCache {
 		tc = app.TemplateCache
 	} else {
@@ -33,7 +32,7 @@ func RenderTemplate(w http.ResponseWriter, html string) {
 		log.Fatal("could not get template from template cache")
 	}
 	buf := new(bytes.Buffer)
-	err := t.Execute(buf, nil)
+	err := t.Execute(buf, td)
 	if err != nil {
 		log.Println(err)
 	}
