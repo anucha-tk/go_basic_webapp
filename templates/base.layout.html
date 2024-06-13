@@ -8,24 +8,28 @@
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
+    <title>Golang Webapp</title>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.12"
+      integrity="sha384-ujb1lZYygJmzgSwoxRggbCHcjc0rB2XoQrxeTUQyRjrOnlCoYta87iKBWq3EsdM2"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.tailwindcss.com"></script>
-
-    {{block "css" .}} {{end}}
   </head>
   <body>
-    <div id="container" class="justify-center items-center content-center">
+    <div id="content" class="justify-center items-center content-center">
       <nav
         class="flex h-20 bg-cyan-800 text-white text-xl justify-center gap-4 items-center"
       >
-        <a href="/">Home</a>
-        <a href="/about">About</a>
+        <ul>
+          <li><a href="#" hx-get="/home" hx-target="#content">Home</a></li>
+          <li><a href="#" hx-get="/about" hx-target="#content">About</a></li>
+        </ul>
       </nav>
       <div class="row">
         <div class="col">{{block "content" .}} {{end}}</div>
       </div>
     </div>
-    {{block "js" .}} {{end}}
   </body>
 </html>
 {{end}}
