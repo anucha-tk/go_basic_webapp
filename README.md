@@ -13,6 +13,7 @@ http server-side render page
 - http
 - templates
   - html
+  - cache the templates
 - css
   - tailwindcss
 
