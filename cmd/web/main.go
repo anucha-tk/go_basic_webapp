@@ -26,13 +26,12 @@ func main() {
 	handlers.NewHandler(repo)
 
 	render.NewTemplates(&app)
+	r := routes()
 
-	http.HandleFunc("/", handlers.Repo.Home)
-	http.HandleFunc("/about", handlers.Repo.About)
-	http.HandleFunc("/time", handlers.Repo.Time)
 	log.Println("run on port", port)
 	srv := http.Server{
 		Addr:              "localhost" + port,
+		Handler:           r,
 		ReadHeaderTimeout: time.Second * 5,
 	}
 	_ = srv.ListenAndServe()
