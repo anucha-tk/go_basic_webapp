@@ -1,24 +1,29 @@
-## GO BASIC WEBAPP
+# GO BASIC WEBAPP
 
 http server-side render page and HTMX
 
 <!--toc:start-->
 
 - [GO BASIC WEBAPP](#go-basic-webapp)
-- [Techs and Tools](#techs-and-tools)
-- [How to run dev](#how-to-run-dev)
-- [Tips](#tips)
+  - [Techs and Tools](#techs-and-tools)
+  - [How to run dev](#how-to-run-dev)
   - [Port error](#port-error)
   <!--toc:end-->
 
 ## Techs and Tools
 
 - http
+- router
+  - chi
+- middlewares
+  - CSRF
+  - logger
+  - session
 - templates
   - html(htmx)
   - cache the templates
 - css
-  - tailwindcss
+  - tailwindcss(CDN)
 - infrastructure
   - commitlint and linter
 - simple htmx
@@ -30,11 +35,7 @@ http server-side render page and HTMX
 make dev
 ```
 
-## Tips
-
-some problem and how to solve
-
-### Port error
+## Port error
 
 ```bash
 # find open port

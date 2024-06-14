@@ -10,8 +10,10 @@ func routes() *chi.Mux {
 	r := chi.NewRouter()
 	r.Use(middleware.Logger)
 	r.Use(NoSurf)
+	r.Use(SessionLoad)
 	r.Get("/", handlers.Repo.Home)
 	r.Get("/about", handlers.Repo.About)
 	r.Get("/time", handlers.Repo.Time)
+	r.Get("/getTime", handlers.Repo.GetTime)
 	return r
 }

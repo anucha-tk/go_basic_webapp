@@ -5,14 +5,28 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/alexedwards/scs/v2"
 	"github.com/anucha-tk/go_basic_webapp/pkg/config"
 	"github.com/anucha-tk/go_basic_webapp/pkg/handlers"
 	"github.com/anucha-tk/go_basic_webapp/pkg/render"
 )
 
+var (
+	app     config.AppConfig
+	session *scs.SessionManager
+)
+
 func main() {
 	const port = ":8080"
-	var app config.AppConfig
+	app.InProduction = false
+
+	session = scs.New()
+	session.Lifetime = 24 * time.Hour
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	session.Cookie.Secure = app.InProduction
+
+	app.Session = session
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
